@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { z } from 'zod';
 import { clsx } from 'clsx';
-import surpriseIcon from './icons/surprise.png';
-import generateIcon from './icons/generate.png';
-import selectAllIcon from './icons/sellectall.png';
+import surpriseIconUrl from './icons/surprise.png?url';
+import generateIconUrl from './icons/generate.png?url';
+import selectAllIconUrl from './icons/sellectall.png?url';
 
 const allThemes = [
   { key: 'NFTs', emoji: '🖼️', desc: 'Novel mechanics, art logic, soulbound, dynamic' },
@@ -264,7 +264,7 @@ export default function App() {
               />
               <div className="flex items-center gap-2">
                 <button title="Select all" className="icon-btn icon-btn-outline" onClick={() => setSelectedThemes(allThemes.map(t=>t.key))}>
-                  <img src={selectAllIcon} width={18} height={18} alt="Select all" />
+                  <img src={selectAllIconUrl} width={18} height={18} alt="Select all" />
                 </button>
                 <button title="Clear" className="icon-btn icon-btn-outline" onClick={() => setSelectedThemes([])}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="#836EF9"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
@@ -301,7 +301,7 @@ export default function App() {
                 onClick={() => callApi('/api/generate', { themes: selectedThemes, idea })}
                 className={clsx('icon-btn icon-btn-outline', (!canGenerate || loading) && 'opacity-60 cursor-not-allowed')}
               >
-                <img src={generateIcon} width={18} height={18} alt="Generate" />
+                <img src={generateIconUrl} width={18} height={18} alt="Generate" />
                 {selectedThemes.length > 0 && (
                   <span className="icon-badge">{selectedThemes.length}</span>
                 )}
@@ -311,7 +311,7 @@ export default function App() {
                 onClick={() => callApi('/api/surprise')}
                 className={clsx('icon-btn icon-btn-outline', loading && 'opacity-60')}
               >
-                <img src={surpriseIcon} width={18} height={18} alt="Surprise me" />
+                <img src={surpriseIconUrl} width={18} height={18} alt="Surprise me" />
               </button>
             </div>
             {error ? <p className="mt-2" style={{color:'#ff7a7a'}}>{error}</p> : null}
